@@ -4,7 +4,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="技术博客,机器学习,工具使用" />
   <meta name="author" content="Mr.Ketchup" />
   <meta name="description" content="" />
   
@@ -196,6 +196,27 @@ MathJax = {
       <div class="comments-container">
         
 
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'l4nnFIpeSSTgl5MnocVvBlFW-gzGzoHsz',
+      appKey: 'GJF2fBb4DBjYSbirFoO5dnym',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-CN'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
 
 
 
