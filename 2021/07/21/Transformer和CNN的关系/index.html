@@ -11,7 +11,7 @@
   
   <title>
     
-      标签 
+      Self-Attention和CNN的关系 
       
       
       |
@@ -122,21 +122,154 @@ MathJax = {
 </script>
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%97%A0%E5%85%B3/" rel="tag">技术无关</a><span class="tag-list-count">1</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Self-Attention和CNN的关系</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2021-07-21 16:13:27
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                    <b>#</b> 机器学习
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="标签"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/NLP/" title="NLP">
+                    <b>#</b> NLP
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/Transformer/" title="Transformer">
+                    <b>#</b> Transformer
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>$$Self-Attention(X)_t= softmax (A_t:)XWval$$</p>
+<p>$$A := XWqryW_{key}^TXw_{val}$$</p>
+<p>$X$​​为一个像素向量,$shape$​​大概长$(T , D_{in})$​这其中$T$​​为像素的数量，$D_{in}$应该为channel维度。</p>
+<p>因此对于这样的输入序列，就算顺序被打乱，输出仍然是相同的</p>
+<p>但在CV任务里，像素的分布是图片的信息之一，将一张图片的像素随机打乱后，就完全是另一张图片了。</p>
+<p>因此要加入位置编码，输入关于位置的信息。</p>
+<p>$$A : = ( X + P ) W _ { q r y } W _ { k e y } ^ { T } ( X + P ) ^ { T }$$</p>
+<p>进一步，把self-attention扩展到多头注意力</p>
+<blockquote>
+<p>多头注意力：把原本的 $W_q,W_k,W_v$​​​​​拆成多个矩阵，再将输出拼接在一起，进行一次线性变换得到最终的output。</p>
+</blockquote>
+<p>$$M H S A ( X ) : =  \underset{h\in[N_h]}{concat} \quad [ Self-Attention( X )] \quad W _ { o u t } + b _ { o u t }$$​​​​</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2021-07-21 16:13:27
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                        <b>#</b> 机器学习
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="标签"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/NLP/" title="NLP">
+                        <b>#</b> NLP
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Transformer/" title="Transformer">
+                        <b>#</b> Transformer
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'l4nnFIpeSSTgl5MnocVvBlFW-gzGzoHsz',
+      appKey: 'GJF2fBb4DBjYSbirFoO5dnym',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-CN'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">

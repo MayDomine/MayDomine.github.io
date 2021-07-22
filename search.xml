@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Self-Attention和CNN的关系</title>
+      <link href="/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
+      <url>/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<p>$$Self-Attention(X)_t= softmax (A_t:)XWval$$</p><p>$$A := XWqryW_{key}^TXw_{val}$$</p><p>$X$​​为一个像素向量,$shape$​​大概长$(T , D_{in})$​这其中$T$​​为像素的数量，$D_{in}$应该为channel维度。</p><p>因此对于这样的输入序列，就算顺序被打乱，输出仍然是相同的</p><p>但在CV任务里，像素的分布是图片的信息之一，将一张图片的像素随机打乱后，就完全是另一张图片了。</p><p>因此要加入位置编码，输入关于位置的信息。</p><p>$$A : = ( X + P ) W _ { q r y } W _ { k e y } ^ { T } ( X + P ) ^ { T }$$</p><p>进一步，把self-attention扩展到多头注意力</p><blockquote><p>多头注意力：把原本的 $W_q,W_k,W_v$​​​​​拆成多个矩阵，再将输出拼接在一起，进行一次线性变换得到最终的output。</p></blockquote><p>$$M H S A ( X ) : =  \underset{h\in[N_h]}{concat} \quad [ Self-Attention( X )] \quad W _ { o u t } + b _ { o u t }$$​​​​</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NLP </tag>
+            
+            <tag> Transformer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第一篇：first of all</title>
       <link href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/"/>
       <url>/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/</url>
