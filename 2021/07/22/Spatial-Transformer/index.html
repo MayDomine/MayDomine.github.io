@@ -156,7 +156,7 @@ MathJax = {
         <h2 id="先讲仿射变换和双线性插值怎么做"><a href="#先讲仿射变换和双线性插值怎么做" class="headerlink" title="先讲仿射变换和双线性插值怎么做"></a>先讲仿射变换和双线性插值怎么做</h2><p>就是把原本的坐标矩阵做一个线性变换，得到新的坐标矩阵，然后由于这个坐标矩阵里面有的不是整数，因此做双线性插值，对output的矩阵上每一个像素P(x,y)来说，它去变换出来的那小数矩阵上，根据公式计算它应该有的像素。</p>
 <p><img src="https://img-blog.csdn.net/20170714231456543?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzQ0NzQ3MDU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Bi-linear Interpolation"></p>
 <p>公式      ：$$R_1=\frac{x_2-x}{x_2-x_1} Q_{11}+\frac{x-x_1}{x_2-x_1} Q_{21}\ \tag{11} R_2=\frac{x_2-x}{x_2-x_1} Q_{12}+\frac{x-x_1}{x_2-x_1} Q_{22}\$$</p>
-<h2 id="然后再看STN"><a href="#然后再看STN" class="headerlink" title="然后再看STN"></a>然后再看STN</h2><p><img src="https://img-blog.csdn.net/20171221204520193?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzk0MjI2NDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="论文原图"></p>
+<h2 id="然后再看STN"><a href="#然后再看STN" class="headerlink" title="然后再看STN"></a>然后再看STN</h2><p><img src="https://maydomine.github.io/images/1.png" alt="论文原图"></p>
 <p>由此可见三个部分：</p>
 <ul>
 <li><em><strong>Localisation</strong></em> <em><strong>net</strong></em> :<em><strong>参数预测</strong></em></li>
