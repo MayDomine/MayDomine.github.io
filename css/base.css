@@ -422,6 +422,8 @@ a:hover {
 
 .post-content {
   padding-bottom: 1rem;
+background-color: #10161a08;
+ padding: 31px;
 }
 
 .prev-or-next {
