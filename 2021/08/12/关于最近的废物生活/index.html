@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2021 
+      关于最近的废物生活 
       
       
       |
@@ -105,77 +105,162 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">关于最近的废物生活</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2021-08-12 18:14:26
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="标签"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                    <b>#</b> 机器学习
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/Linux/" title="Linux">
+                    <b>#</b> Linux
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p> 从台风天过去以后到现在，因为实在没感觉学到十分有用的东西，就没有写博客。</p>
+<p>不过最近掌握了一些新工具，机器学习的话，知道了fairseq和huggingface的用法，起码能把数据输进去，huggingface多机多卡也十分方便，用accelerate配置一下就可以了。</p>
+<p>由于是NMT比赛，要做bpe分词和tokenize处理，所以学会了写脚本，然后也试过字节的VOLT方法来分词，但bleu差太多了，于是就放弃了。由于MASS本身的代码就有回译和模型集成，所以这些不算是我完成的工作。</p>
+<p>不过昨天学了一手R-drop，实现非常简单，但效果的确不错，单模型有1bleu的提升，但是集成起来好像就不多了。</p>
+<p>之前想根据测试集和验证集的Embedding来筛选一部分训练数据做微调，但是发现由于是跨领域翻译，所以这个方法也失败了。</p>
+<p>还有加改写模型的尝试，因为懒得重新训练一个bert来做，就直接拿预训练好的MASS对着预测结果和实际结果硬做，效果也不是很好，但我觉得是训练集太少的缘故，后面还可以继续尝试。</p>
+<p>beam-size这个超参感觉越大越好。</p>
+<p>所以现在就是会用很多东西，但是原理都不知道，所以立个todo list吧</p>
+<ul>
+<li><input disabled type="checkbox"> BPE分词的原理</li>
+<li><input disabled type="checkbox"> VOLT构建词表论文</li>
+<li><input disabled type="checkbox"> Copy机制和指针网络</li>
+<li><input disabled type="checkbox"> 简单问答数据生成的论文</li>
+<li><input disabled type="checkbox"> R-drop的论文</li>
+<li><input disabled type="checkbox"> 回译的论文</li>
+<li><input disabled type="checkbox"> AutoEncoder的论文</li>
+<li><input disabled type="checkbox"> Beam-Search的论文</li>
+</ul>
+<p>然后还有就是最近用了新工具</p>
+<p>linux：fzf (堪比Listary) Crontab(定时任务)</p>
+<p>python: networkx(绘制图) jsonlines(把python对象dump成jsonline，没有json库的编码问题，而且很好用)</p>
+<p>这里要说一下，这个是因为要用huggingface要求用json文件来储存数据，但对于（在NMT里）数据的要求实际是jsonline格式，就很离谱</p>
+<p>然后除了机器学习，打超算比赛也出现了一些问题</p>
+<p>因为要做向量化，用的AVX512，但是由于有一步是要把结果储存在一个二维数组的元素里，而且是跳着存储，所以用到了gather函数，但是avx512不管是load，gather，凡是涉及到读写内存的地方，一个要求地址连续，还有就是要求用_mm_malloc开辟空间，为了满足这两个条件，把原本的二维数组开辟成一维数组，然后用指针数组来指向它每一维的开头，这样地址就是连续的，但我的尝试最后还是失败了，gather函数太耗时了，然后结果最后也是错的。但是发现这种申请二维数组的方式比之前的快，_mm_malloc也比直接new要快。</p>
+<p>还有两周就要开学了，有点想又有点不想，但夏天确实该结束了，真充实呀。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/07/25/%E5%8F%B0%E9%A3%8E%E5%A4%A9%E7%9A%84%E6%83%85%E6%99%AF%E5%96%9C%E5%89%A7/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2021-08-12 18:14:26
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="标签"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                        <b>#</b> 机器学习
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Linux/" title="Linux">
+                        <b>#</b> Linux
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="关于最近的废物生活">
-        <div class="time-m-d">08-12</div>
-        <div class="title">
-          <a href="/2021/08/12/%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91%E7%9A%84%E5%BA%9F%E7%89%A9%E7%94%9F%E6%B4%BB/">
-            <span>关于最近的废物生活</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="台风天的情景喜剧">
-        <div class="time-m-d">07-25</div>
-        <div class="title">
-          <a href="/2021/07/25/%E5%8F%B0%E9%A3%8E%E5%A4%A9%E7%9A%84%E6%83%85%E6%99%AF%E5%96%9C%E5%89%A7/">
-            <span>台风天的情景喜剧</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="刮大风的7/23日，晴">
-        <div class="time-m-d">07-23</div>
-        <div class="title">
-          <a href="/2021/07/23/%E5%88%AE%E5%A4%A7%E9%A3%8E%E7%9A%847-23%E6%97%A5%EF%BC%8C%E6%99%B4/">
-            <span>刮大风的7/23日，晴</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Spatial Transformer">
-        <div class="time-m-d">07-22</div>
-        <div class="title">
-          <a href="/2021/07/22/Spatial-Transformer/">
-            <span>Spatial Transformer</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Self-Attention for CNN">
-        <div class="time-m-d">07-21</div>
-        <div class="title">
-          <a href="/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/">
-            <span>Self-Attention for CNN</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="第一篇：first of all">
-        <div class="time-m-d">07-20</div>
-        <div class="title">
-          <a href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/">
-            <span>第一篇：first of all</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'l4nnFIpeSSTgl5MnocVvBlFW-gzGzoHsz',
+      appKey: 'GJF2fBb4DBjYSbirFoO5dnym',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-CN'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         <div class="footer">
   <div class="social">
