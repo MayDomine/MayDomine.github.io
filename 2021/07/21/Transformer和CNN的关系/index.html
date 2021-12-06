@@ -11,6 +11,11 @@
   
   <title>
     
+      Self-Attention for CNN 
+      
+      
+      |
+    
      Peppermint Candy&#39;s world
   </title>
 
@@ -100,121 +105,176 @@
 
 
       <div class="flex-container">
-        <div class="container index">
-  <div class="post-list">
-    <!-- 遍历渲染文章 -->
-    
-      <div class="post-item" title="效率提升指南(一) 工作篇（上）">
-        <div class="time-m-d">2021-11-18</div>
-        <div class="title">
-          <a href="/2021/11/18/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%E6%8C%87%E5%8D%97/">
-            
-              
-                <span>效率提升指南(一) 工作篇（上）</span>
-              
-            
-          </a>
-        </div>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Self-Attention for CNN</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2021-07-21 16:13:27
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                    <b>#</b> 机器学习
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="标签"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/NLP/" title="NLP">
+                    <b>#</b> NLP
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/Transformer/" title="Transformer">
+                    <b>#</b> Transformer
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
-    
-      <div class="post-item" title="PAC砸牌感言">
-        <div class="time-m-d">2021-10-23</div>
-        <div class="title">
-          <a href="/2021/10/23/PAC%E7%A0%B8%E7%89%8C%E6%84%9F%E8%A8%80/">
-            
-              
-                <span>PAC砸牌感言</span>
-              
-            
-          </a>
-        </div>
+      <div class="markdown-body">
+        <p>$$Self-Attention(X)_t= softmax (A_t:)XWval$$</p>
+<p>$$A := XWqryW_{key}^TXw_{val}$$</p>
+<p>$X$​​为一个像素向量,$shape$​​大概长$(T , D_{in})$​这其中$T$​​为像素的数量，$D_{in}$应该为channel维度。</p>
+<p>因此对于这样的输入序列，就算顺序被打乱，输出仍然是相同的</p>
+<p>但在CV任务里，像素的分布是图片的信息之一，将一张图片的像素随机打乱后，就完全是另一张图片了。</p>
+<p>因此要加入位置编码，输入关于位置的信息。</p>
+<p>$$A : = ( X + P ) W _ { q r y } W _ { k e y } ^ { T } ( X + P ) ^ { T }$$</p>
+<p>进一步，把self-attention扩展到多头注意力</p>
+<blockquote>
+<p>多头注意力：把原本的 $W_q,W_k,W_v$​​​​​拆成多个矩阵，再将输出拼接在一起，进行一次线性变换得到最终的output。</p>
+</blockquote>
+<p>$$M H S A ( X ) : =  \underset{h\in[N_h]}{concat} \quad [ Self-Attention( X )] \quad W _ { o u t } + b _ { o u t }$$​​​​</p>
+
       </div>
-    
-      <div class="post-item" title="MSRA实习面经">
-        <div class="time-m-d">2021-09-01</div>
-        <div class="title">
-          <a href="/2021/09/01/MSRA%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/">
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
             
-              
-                <span>MSRA实习面经</span>
-              
+              <a href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
             
-          </a>
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2021-07-21 16:13:27
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">
+                        <b>#</b> 机器学习
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="标签"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/NLP/" title="NLP">
+                        <b>#</b> NLP
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Transformer/" title="Transformer">
+                        <b>#</b> Transformer
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/07/22/Spatial-Transformer/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
-      </div>
+      
+    </div>
     
-      <div class="post-item" title="关于最近的废物生活">
-        <div class="time-m-d">2021-08-12</div>
-        <div class="title">
-          <a href="/2021/08/12/%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91%E7%9A%84%E5%BA%9F%E7%89%A9%E7%94%9F%E6%B4%BB/">
-            
-              
-                <span>关于最近的废物生活</span>
-              
-            
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="刮大风的7/23日，晴">
-        <div class="time-m-d">2021-07-23</div>
-        <div class="title">
-          <a href="/2021/07/23/%E5%88%AE%E5%A4%A7%E9%A3%8E%E7%9A%847-23%E6%97%A5%EF%BC%8C%E6%99%B4/">
-            
-              
-                <span>刮大风的7/23日，晴</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Spatial Transformer">
-        <div class="time-m-d">2021-07-22</div>
-        <div class="title">
-          <a href="/2021/07/22/Spatial-Transformer/">
-            
-              
-                <span>Spatial Transformer</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Self-Attention for CNN">
-        <div class="time-m-d">2021-07-21</div>
-        <div class="title">
-          <a href="/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/">
-            
-              
-                <span>Self-Attention for CNN</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="第一篇：first of all">
-        <div class="time-m-d">2021-07-20</div>
-        <div class="title">
-          <a href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/">
-            
-              
-                <span>第一篇：first of all</span>
-              
-            
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+  <div id="vcomments"></div>
+
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: 'l4nnFIpeSSTgl5MnocVvBlFW-gzGzoHsz',
+      appKey: 'GJF2fBb4DBjYSbirFoO5dnym',
+      placeholder: 'Welcome!',
+      avatar: 'retro',
+      lang: 'zh-CN'
+    })
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>
-    
-  </nav>
-</div>
+
 
         <div class="footer">
   <div class="social">

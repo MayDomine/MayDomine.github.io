@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>效率提升指南(一) 工作篇（上）</title>
+      <link href="/2021/11/18/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%E6%8C%87%E5%8D%97/"/>
+      <url>/2021/11/18/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%E6%8C%87%E5%8D%97/</url>
+      
+        <content type="html"><![CDATA[<h2 id="工具清单"><a href="#工具清单" class="headerlink" title="工具清单"></a>工具清单</h2><ul><li><p>vscode及其插件</p></li><li><p>python环境管理</p></li><li><p>常用shell工具</p></li><li><p>listary + quicker + utools 百宝箱</p></li><li><p>磁盘管理工具</p></li><li><p>文本编辑工具(except vscode)</p></li></ul><h2 id="VSCODE"><a href="#VSCODE" class="headerlink" title="VSCODE"></a>VSCODE</h2><p>世界最强IDE没有之一，真正的生产力利器。vscode本身已经不用再介绍，直接从插件讲起。</p><h3 id="REMOTE-SSH"><a href="#REMOTE-SSH" class="headerlink" title="REMOTE SSH"></a>REMOTE SSH</h3><p>远程ssh,可以直接拿vscode远程连接服务器，不仅有资源管理器，而且远程安装vscode以后，装上语言服务器，代码跳转不是梦。一边用着终端，一边可以实时浏览代码进行修改。</p><h3 id="Jupyter-notebook"><a href="#Jupyter-notebook" class="headerlink" title="Jupyter notebook"></a>Jupyter notebook</h3><p>装上vscode的jupyter插件之后，基本就可以闲置之前的jupyter网络服务了，不用像之前卡在一个工作区里，可以实时编辑ipynb文件，并且有更好的交互式体验，还可以直接在cell里debug。</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118173053231.png" alt="image-20211118173053231"></p><h3 id="draw-io"><a href="#draw-io" class="headerlink" title="draw.io"></a>draw.io</h3><p>绘制矢量图神器，啥都能画，开源免费，吹爆！</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118173034149.png" alt="image-20211118173034149"></p><h3 id="Tabnine"><a href="#Tabnine" class="headerlink" title="Tabnine"></a>Tabnine</h3><p>AI引擎代码补全，挺好用的，省事。</p><h3 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h3><p>很多人吹vim好用，我个人也觉得vim不需要鼠标的设计很爽，用的很舒服，所以我不做人了，我直接在vscode里用vim插件!</p><p>ps:后来发现有些快捷键很蛋疼，所以我直接用了AutoHotKey改了键盘映射（caps+hijk代替原本的上下左右，alt+hl代替ctrl 加左右，毕竟我只是个vim轻度用户orz）</p><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>VSCODE有很多很多的快捷键，而对每个插件还有更多更多的快捷键，而同样的快捷键在不同的工作区和聚焦点有不同的作用，所以贼鸡儿好用！后续会放上我自己的快捷键json</p><p>vscode的设计思路好像就是万物皆json</p><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>我一般只用vscode写python和c++</p><p>python调试一般是跑大预训练模型的微调，是以执行shell脚本的方式运行的，但由于配置调试的launch.json很难受，所以我采取另一种方式，在远端服务器上装debugpy这个库 然后在脚本里加上 -m debugpy –listen localhost:端口号。</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118173958020.png" alt="image-20211118173958020"></p><p>然后还需要vscode里添加对应的调试配置，点添加调试配置，然后选Python:attach，再在json里设置一下刚刚的端口号，就可以直接debug了</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118174256406.png" alt="image-20211118173958020"></p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118175132417.png" alt="image-20211118173958020"></p><p>而c++ debug一般要更麻烦，如果是单文件还好，直接用默认的就可以，多文件大项目的话，一般有自己的cmake脚本和make脚本，配置好默认的prelaunch task后还要配对应的参数。我一般用gdb调试，生成二进制之后，用gdb运行，vscode跟踪gdb进程号的方式调试。</p><h2 id="python环境管理"><a href="#python环境管理" class="headerlink" title="python环境管理"></a>python环境管理</h2><p>我只能说这里水很深，懂的都懂，不懂得说了也不懂</p><h3 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h3><p>多环境管理，很少遇到问题，有个点就是conda create 后面跟–clone 再加上一个你从别的地方拷过来的环境，就可以很简单的完成离线的环境移植。</p><p>conda install的包很少，基本平时还是用pip</p><h3 id="深度学习环境"><a href="#深度学习环境" class="headerlink" title="深度学习环境"></a>深度学习环境</h3><p>这里水太深了，等我摸熟了，再开一篇单独讲</p><h2 id="常用shell-工具"><a href="#常用shell-工具" class="headerlink" title="常用shell 工具"></a>常用shell 工具</h2><h3 id="模糊搜索-fzf"><a href="#模糊搜索-fzf" class="headerlink" title="模糊搜索 fzf"></a>模糊搜索 fzf</h3><p>linux下的listary，非常好用，不仅支持文件搜索，还兼容很多其他的命令，比如vim,kill</p><p>还可以搜索历史输入命令</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118180501904.png" alt="image-20211118180501904"></p><h3 id="系统监控-htop"><a href="#系统监控-htop" class="headerlink" title="系统监控 htop"></a>系统监控 htop</h3><p>非常帅气的系统监控工具，有shell的图形界面</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20211118180722447.png" alt="image-20211118180722447"></p><h3 id="处理命令-ag-sed-grep-awk"><a href="#处理命令-ag-sed-grep-awk" class="headerlink" title="处理命令 ag sed grep awk"></a>处理命令 ag sed grep awk</h3><p>我也没玩明白，玩明白了开一期讲</p><p>墙裂推荐上海交大Ipads实验室的入门教程系列，里面第一讲详细讲解了 shell使用，MIT也有相关的教程和lab</p><p>这里贴一下</p><p><a href="https://missing.csail.mit.edu/2020/course-shell/">Course overview + the shell · the missing semester of your cs education (mit.edu)</a></p><p><a href="https://www.bilibili.com/video/BV1y44y1v7c3?from=search&seid=13730976481603211551&spm_id_from=333.337.0.0">IPADS新人培训第一讲：Shell_哔哩哔哩_bilibili</a></p><h3 id="偷看工具-strace"><a href="#偷看工具-strace" class="headerlink" title="偷看工具 strace"></a>偷看工具 strace</h3><p>这个可以很细粒度的追踪每个进程的具体信息，比如输出的文件流，对系统的调用等待，功能非常强大，我一般用来看服务器上某某的模型训练到第几个epoch。</p><h3 id="终端复用工具-screen-tmux"><a href="#终端复用工具-screen-tmux" class="headerlink" title="终端复用工具 screen tmux"></a>终端复用工具 screen tmux</h3><p>有时候要跑一些大应用，可能因为网络原因，终端断联导致程序终止。为了避免这种情况，就有了screen 和tmux，我用screen用的比较多，因为vscode上 tmux很丑。</p><p>screen只需要记住两三个命令就可以用起来了</p><p>screen -S name创建会话</p><p>screen -R name恢复会话</p><p>screen -ls查看所有会话</p><p>screen -d name 断开某个attached的会话</p><p>ctrl d杀死当前会话</p><p>ctrl alt d退出当前会话，回到原本终端</p><p>不要在screen里开screen，别套娃.</p><p>screen上翻屏幕有点麻烦，建议直接输出到文本文件，然后vim或者vscode看</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具使用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PAC砸牌感言</title>
+      <link href="/2021/10/23/PAC%E7%A0%B8%E7%89%8C%E6%84%9F%E8%A8%80/"/>
+      <url>/2021/10/23/PAC%E7%A0%B8%E7%89%8C%E6%84%9F%E8%A8%80/</url>
+      
+        <content type="html"><![CDATA[<p> 我原本以为是可以拿三等奖的，最后我们还是像去年一样拿了并行基金奖</p><p>时间从23号晚宴倒回到刚刚发布赛题的时候，按组委会的思路把文件分割、二级映射都尝试之后，一点优化也没有。</p><p>随后hxw在某次改代码时候不小心注释掉了consumer里的delete发现时间变快，注意到程序反复开辟内存来储存pack，用循环队列做了优化，时间减半。</p><p>再然后又是漫长的尝试，换map，换锁，但都没有用</p><p>然后又是一个巧合让我们意识到程序瓶颈在压缩文件读写上</p><p>于是换IPP的zlib，还有pigz，hxw用popen开了个子进程来写压缩文件。</p><p>再然后更新gcc，glibc。</p><p>一系列换库的操作终于让我们到200s，原本我们以为第一名不过140s，因此觉得名次应该还不错。</p><p>…..</p><p>也许决赛前一天晚上，我在翻到山东大学那位指导老师的github仓库时候再仔细看一下就好了。</p><p>最后被狠狠的碾压了。</p><p>看了其他学校的ppt</p><p>我们确实还差的很远，既不够努力，也不够有能力。</p><p>其他学校或许只有一两个人参加，随便优化，就远超我们努力很久的水平。</p><p>后面没有拿奖的学校，或许结果没我们好，但是做了更多的尝试，在没有学长铺路的情况，和我们成绩相当。</p><p>我的c++ 和Linux都太菜了</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSRA实习面经</title>
+      <link href="/2021/09/01/MSRA%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/"/>
+      <url>/2021/09/01/MSRA%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F/</url>
+      
+        <content type="html"><![CDATA[<p>​    前几天心血来潮投了MSRA的实习，本来是打算好好准备到冬天再投的，但是心想投下简历试试应该没事，也没有仔细选组，看到实习计划上第一个组是DKI组，然后也是侧重NLP方向，就直接投了。做了中英文的简历然后发了过去。大概投简历三天后邮箱收到了回信，回信是英文的，提了三个问题，首先问我接下来一年有多长时间能够实习，然后问我毕业后的打算，最后约面试的时间，英语菜鸡的我这才发现Interview是面试的英文单词。回邮件以后，大概等了三四天，收到了回信，一面的研究员貌似是小组组长的角色，和我聊了大概四十分钟，聊了之前超算的比赛经验，还有我参加的那个科大讯飞的翻译比赛，问了一些项目的细节，我情绪比较激动，偶尔有点语无伦次，但面试官全程很温柔，和我保持友好的交流，让人很舒服。</p><p>​    大概一星期后，二面的电话打过来，微软好像都是010开头的号码。二面就开始考核算法啦，但也没给我发做题的网页链接，而是和我简单的聊了一下，因为当天在优化IPCC比赛的代码，（比赛赛题是优化超像素分割算法）看到网上有个博客说用扫描线算法比原本普通的种子生长要更快，所以看了一下扫描线算法，然后面试官就问我有关IPCC这个比赛的细节，我就顺便说了一下那天看到的优化，然后他居然也很懂这个！(看来是计算机图形学大佬)，就问我为什么扫描线算法比泛洪更快，我刚好有在博客看到！因为访问相邻内存，都在同一CacheLine的原因(网上博客也是猜测，我也没具体试验过)，然后聊完了这些，他就开始让我共享屏幕，因为之前打算法比赛都是用java，我本身也是个c++菜鸡(高中没打过算法比赛)，所以就在Inteli J上开始写。他提问的问题也很基础:给定一个序列[x1,x2,x3,x4],然后找到 $X_i和X_j$​​​​​​​​​的和大于给定数字K，求满足条件的所有i,j的数字对数目。首先要排序，所以复杂度已经是O(NlogN),然后我想到了一个二分查找去插入的解决方案：比如序列[30,50,70],k=40，从30开始，然后二分搜40-30这个数的下标，这里应该是1，也就是1往后的数都满足与30的和大于等于k，这样算下来复杂度也是O(NlogN),但这样不是最优的。实际上，维护一个双指针，起始阶段，一个指向头，一个指向尾，如果当前和满足条件，就让尾指针左移一次，满足条件的数目加一，如果当前和不满足条件，就让头指针右移一次，同时加上（序列长度-当前尾指针）的数目，然后继续判断是否满足条件。这样做的原因是，对于头指针右移后对应的数，尾指针之后的数和它的和都是满足条件的，因此直接加上他们的下标差值就可以了。这样的话复杂度是O(N)级别。后面又问了一些简单的概率论问题，比如六颗球，三颗红，三颗白，不放回抽两个，颜色相同的概率是多少。。</p><p>​    三面是昨晚刚刚打过来的，三面的面试官是做NLP的，问了一些机器学习和深度学习的基础知识，具体问题大概是：</p><p>​    如何解决长文本输入带来的显存占用？</p><p>​    自回归decoder是如何并行训练的？</p><p>​    如何判断过拟合和欠拟合，如何解决过拟合？</p><p>​    贝叶斯公式，逻辑回归的损失函数</p><p>​    一个硬币不规则，如何估计正面概率，(只能扔1000次)</p><p>感觉面试的体验很好，面试官一直在引导我去往正确的思路去想，有些东西之前并没有看过，但是面试的时候却想出了解决思路，感觉他们更看重思维能力这方面，但主要可能还是因为我才大三，他们也放宽了要求。</p><p>​    接下来就是等结果啦，希望能拿到Offer.</p><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面经 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> life </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于最近的废物生活</title>
+      <link href="/2021/08/12/%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91%E7%9A%84%E5%BA%9F%E7%89%A9%E7%94%9F%E6%B4%BB/"/>
+      <url>/2021/08/12/%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91%E7%9A%84%E5%BA%9F%E7%89%A9%E7%94%9F%E6%B4%BB/</url>
+      
+        <content type="html"><![CDATA[<p> 从台风天过去以后到现在，因为实在没感觉学到十分有用的东西，就没有写博客。</p><p>不过最近掌握了一些新工具，机器学习的话，知道了fairseq和huggingface的用法，起码能把数据输进去，huggingface多机多卡也十分方便，用accelerate配置一下就可以了。</p><p>由于是NMT比赛，要做bpe分词和tokenize处理，所以学会了写脚本，然后也试过字节的VOLT方法来分词，但bleu差太多了，于是就放弃了。由于MASS本身的代码就有回译和模型集成，所以这些不算是我完成的工作。</p><p>不过昨天学了一手R-drop，实现非常简单，但效果的确不错，单模型有1bleu的提升，但是集成起来好像就不多了。</p><p>之前想根据测试集和验证集的Embedding来筛选一部分训练数据做微调，但是发现由于是跨领域翻译，所以这个方法也失败了。</p><p>还有加改写模型的尝试，因为懒得重新训练一个bert来做，就直接拿预训练好的MASS对着预测结果和实际结果硬做，效果也不是很好，但我觉得是训练集太少的缘故，后面还可以继续尝试。</p><p>beam-size这个超参感觉越大越好。</p><p>所以现在就是会用很多东西，但是原理都不知道，所以立个todo list吧</p><ul><li><input disabled type="checkbox"> BPE分词的原理</li><li><input disabled type="checkbox"> VOLT构建词表论文</li><li><input disabled type="checkbox"> Copy机制和指针网络</li><li><input disabled type="checkbox"> 简单问答数据生成的论文</li><li><input disabled type="checkbox"> R-drop的论文</li><li><input disabled type="checkbox"> 回译的论文</li><li><input disabled type="checkbox"> AutoEncoder的论文</li><li><input disabled type="checkbox"> Beam-Search的论文</li></ul><p>然后还有就是最近用了新工具</p><p>linux：fzf (堪比Listary) Crontab(定时任务)</p><p>python: networkx(绘制图) jsonlines(把python对象dump成jsonline，没有json库的编码问题，而且很好用)</p><p>这里要说一下，这个是因为要用huggingface要求用json文件来储存数据，但对于（在NMT里）数据的要求实际是jsonline格式，就很离谱</p><p>然后除了机器学习，打超算比赛也出现了一些问题</p><p>因为要做向量化，用的AVX512，但是由于有一步是要把结果储存在一个二维数组的元素里，而且是跳着存储，所以用到了gather函数，但是avx512不管是load，gather，凡是涉及到读写内存的地方，一个要求地址连续，还有就是要求用_mm_malloc开辟空间，为了满足这两个条件，把原本的二维数组开辟成一维数组，然后用指针数组来指向它每一维的开头，这样地址就是连续的，但我的尝试最后还是失败了，gather函数太耗时了，然后结果最后也是错的。但是发现这种申请二维数组的方式比之前的快，_mm_malloc也比直接new要快。</p><p>还有两周就要开学了，有点想又有点不想，但夏天确实该结束了，真充实呀。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>刮大风的7/23日，晴</title>
+      <link href="/2021/07/23/%E5%88%AE%E5%A4%A7%E9%A3%8E%E7%9A%847-23%E6%97%A5%EF%BC%8C%E6%99%B4/"/>
+      <url>/2021/07/23/%E5%88%AE%E5%A4%A7%E9%A3%8E%E7%9A%847-23%E6%97%A5%EF%BC%8C%E6%99%B4/</url>
+      
+        <content type="html"><![CDATA[<p>昨晚打星际2，打一把掉一次线，今天早上九点起床就感觉到事情不对，但彼时彼刻的我，却未曾料到事情会像沉入马里亚海沟一般漆黑无常。</p><p>起床以后，我照常洗漱，然后开了三把星际2，第一把TVT很正常，双方实力相当，结果没升攻防的好兄弟被对面N船运输船直接打穿，我直接打出GG</p><p>第二把，还是TVT，光明泰伦舍我其谁，我吸取教训，开二矿的同时，下了双气准备升攻防打后期，结果卡人口坦克没出来，四分钟被对面的六个光头打穿。</p><p>第三把，又是他娘的该死的tvt人族内战，农民出门看到对面在堵二矿的口，哈哈，二矿开的这么早，一定是骗我，这个b一定是想单矿打我一波，我预判到了你的预判，直接狗出三矿十兵营，然后发现对面也是生化部队，露出了微笑，我十兵营的暴兵能力哈哈，结果发现是个坦克加解放者占地形的b，运输机只是用来往我矿区投地雷了，第一波失误我的好兄弟被坦克全歼，第二波解放者来的时候，我的维京才憋出来两台。哈哈，没事，才输三把，赢我纯属巧合。</p><p>结果看回放的时候，我打出GG的时候。</p><p>人嘛，还是要有自知之明。</p><p>今天不赢一把不上班</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20210723181255964.png" alt="image-20210723181255964"></p><p>第四把！第四把这个b居然比我还菜，运营慢，防守也做的一般，我照教学视频里的两矿一波打法，三船兵到脸的时候，趁他还在集结部队，直接打穿。</p><p>这把九分钟就结束了，但是输了三把的我内心极度不爽，对方投降以后我还是给他家拆了才退游戏(鞭尸)</p><p>被因为已经将近九点半了，就匆忙收拾了一下去地铁站，一早学长就告诉我说今天要晚上要下大雨，他们决定拿个电脑就回家，而我早已看穿今天的天象，刮风，晴天，必然没雨。</p><p>坐在地铁上，打开李宏毅，开始看今天的黑暗大陆。一站，两站，三站，感觉快到了，所以我把手机关掉，准备下车，在机舱门口，我再次感觉到了那天晚上在宿舍楼下所体验到的那种奇妙感觉，我知道神奇的事情即将发生，地铁口写着，金桥站，是没见过的世面，坐反了。</p><p>因为经常发生这种事情我已经儒雅随和了，来到公司发现今天没人，调试模型的时候发现有bug，哈哈等着学长们改完我再做测试吧！下午去看电影！</p><p>看电影翻车了，买票时候看座位很多还没人我以为是大影厅，结果电影屏幕堪比我手机屏幕，几乎是眯着眼看的，还是他娘的3D版本，没事，电影好看就行。</p><p>结果娘的电影音箱也翻车，糊的一批，走之前按照惯例，检查手机钥匙耳机，每次都会check一遍。</p><p>哈哈，一切都可以被原谅，人嘛，最重要的还是开心啦。</p><p>看完电影，走出电影院，大风和大太阳毫不违和的同时存在，头顶的假发都要掀起来了，到了公交站口，手机只有百分之一的电了，我去理发店租了共享充电宝，然后在里面也不理头发，就坐那充电，真的好尴尬啊。。。。</p><p>充完电以后坐上了公交车，下公交车的时候再check一遍，手机钥匙耳机。</p><p>公交站到湾谷的路就一小截，这一路上索然无味，一件倒霉的事情都没有发生，总的来说，由于平时一出门玩就会有各种奇怪倒霉的事情发生</p><p>所以今天大概还算好。</p><p>如果最后没有发现把湾谷的门卡弄丢的话！</p><p>压垮阳光泰伦的最后一根稻草，check的时候忘记今天出门还带了门卡他娘的。</p><p>但是，和上次一样，我，再次掏出了决胜卡组，和命运女神开始了智力的拼搏！</p><p>时间倒回一个星期以前，还没有门卡的我找学姐要了一张门卡，复制在手机上，但是经常刷不出来，所以我决定在网上买几张白卡(梦回高中)</p><p>买了四张cuid卡，根据实验室条例，弄丢白卡要赔50块钱的，所以星期三老师给我白卡的时候，我就自己复制了一张备用，因为这里的门禁好像是直接验证UID,没有什么加密，所以直接用MIFARE CLASSIC TOOLS就可以cvUID到另一张卡，也不用买读卡器连接电脑暴力破解。</p><p>所以愉快的从货梯进实验室，取到了备用卡。</p><p>直到现在也没有下雨，愉快结束的划水生活。</p><p>事后顺便看了一下校园卡的类型，是模拟cpu卡，但感觉，可能出校门刷的时候，只读取了uid部分这样？ 如果没有联网的话，感觉可以试试复制研究生出校卡的UID到白卡上。然后可能他们出校门的卡只是普通的M1卡，这样就算有加密扇区，也可以淘宝七天包退货买个读卡机试试破解！)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> life </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 关于漆黑的马里亚海沟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spatial Transformer</title>
+      <link href="/2021/07/22/Spatial-Transformer/"/>
+      <url>/2021/07/22/Spatial-Transformer/</url>
+      
+        <content type="html"><![CDATA[<h2 id="先讲仿射变换和双线性插值怎么做"><a href="#先讲仿射变换和双线性插值怎么做" class="headerlink" title="先讲仿射变换和双线性插值怎么做"></a>先讲仿射变换和双线性插值怎么做</h2><p>就是把原本的坐标矩阵做一个线性变换，得到新的坐标矩阵，然后由于这个坐标矩阵里面有的不是整数，因此做双线性插值，对output的矩阵上每一个像素P(x,y)来说，它去变换出来的那小数矩阵上，根据公式计算它应该有的像素。</p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/SouthEast.png" alt="Bi-linear Interpolation"></p><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20210722165809211.png" alt="image-20210722165809211"></p><h2 id="然后再看STN"><a href="#然后再看STN" class="headerlink" title="然后再看STN"></a>然后再看STN</h2><p>由此可见三个部分：</p><ul><li><em><strong>Localisation</strong></em> <em><strong>net</strong></em> :<em><strong>参数预测</strong></em></li><li><em><strong>Gridgenerator</strong></em> :<em><strong>坐标映射</strong></em></li><li>***Sampler:***<em><strong>像素采集</strong></em></li></ul><p><img src="https://raw.githubusercontent.com/MayDomine/Photo_for_blog/master/images/image-20210722163222431.png" alt="image-20210722163222431"></p><p>听起来和玄乎，第一个参数预测其实就是前面说的仿射变换，对于图片来说，一个(2,3)的矩阵就可以完成各种变换(旋转，平移，放大，缩小)</p><p>第二个坐标映射就是 拿原本的坐标矩阵乘上仿射变换的矩阵，得到一个新的坐标矩阵 $X^S$</p><p>由于新的坐标矩阵可能有小数，要做处理，这里有两种方式，一种是向前映射，就是将新坐标对应的点(浮点数坐标的点)根据其周围四个点的位置，把自己的值按照权重分给周围四个点，最后结果是原本映射的像素点按照一定权重叠加出来的矩阵。</p><p>还有一个是向后映射，就是说我们最终output出来的这个新矩阵，它的shape我们是知道了，那根据它的每个点坐标，根据逆映射，可以找到对应原图像上的一个坐标(但是可能存在浮点数)，然后用这个浮点数坐标周围的四个点来进行插值，就能计算出一个个的像素。（我本来以为这个地方要对变换矩阵求逆，但是其实不用，在初始定义的时候，变换矩阵就没有卡死说是对谁的变换，而且参数也是随着梯度下降逐渐更新的，所以一开始做坐标映射的时候就向后映就ok了）</p><p>反向传播我没有推，但是据说这样的方法是可以正确回传的，放上公式把。</p><p><img src="https://gitee.com/shilongshen/image-bad/raw/master/img/20200711175159.png" alt="img"></p><p><a href="https://blog.csdn.net/qq_40901266/article/details/107301425?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.control&spm=1001.2101.3001.4242">参考</a></p><p>还有Pytorch官方的tutorial <a href="https://pytorch.org/tutorials/intermediate/spatial_transformer_tutorial.html">Spatial Transformer Networks Tutorial — PyTorch Tutorials 1.9.0+cu102 documentation</a></p><p>然后我在李宏毅2021的HW3里试了一下这个，但是由于HW3里本身就做过Data-aug，所以效果可能不是太好，而且具体超参数我也懒得调。</p><p>官方给的代码里面还是有很多东西的</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">10</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">10</span>, <span class="number">20</span>, kernel_size=<span class="number">5</span>)</span><br><span class="line">        self.conv2_drop = nn.Dropout2d()</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">320</span>, <span class="number">50</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">50</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Spatial transformer localization-network 这里就是参数预测部分，可以看到其实接了两层卷积池化，这里的参数是决定后面变换矩阵参数的。</span></span><br><span class="line">        self.localization = nn.Sequential(</span><br><span class="line">            nn.Conv2d(<span class="number">1</span>, <span class="number">8</span>, kernel_size=<span class="number">7</span>), <span class="comment">#卷积层的第一个参数是in_channel的Dimension，第二个是out_channel的Dimension</span></span><br><span class="line">            <span class="comment">#Kernel_size是卷积核的大小</span></span><br><span class="line">            nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line">            nn.ReLU(<span class="literal">True</span>),</span><br><span class="line">            nn.Conv2d(<span class="number">8</span>, <span class="number">10</span>, kernel_size=<span class="number">5</span>),</span><br><span class="line">            nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>),</span><br><span class="line">            nn.ReLU(<span class="literal">True</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Regressor for the 3 * 2 affine matrix 这个矩阵对参数矩阵做变换，然后得到(N,2,3)的变换矩阵</span></span><br><span class="line">        self.fc_loc = nn.Sequential(</span><br><span class="line">            nn.Linear(<span class="number">10</span> * <span class="number">3</span> * <span class="number">3</span>, <span class="number">32</span>),</span><br><span class="line">            nn.ReLU(<span class="literal">True</span>),</span><br><span class="line">            nn.Linear(<span class="number">32</span>, <span class="number">3</span> * <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Initialize the weights/bias with identity transformation</span></span><br><span class="line">        self.fc_loc[<span class="number">2</span>].weight.data.zero_()</span><br><span class="line">        self.fc_loc[<span class="number">2</span>].bias.data.copy_(torch.tensor([<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], dtype=torch.<span class="built_in">float</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Spatial transformer network forward function</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stn</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="comment">#这里就是Spatial transformer的部分，先根据输入前传得到具体的theta矩阵</span></span><br><span class="line">        xs = self.localization(x)</span><br><span class="line">        xs = xs.view(-<span class="number">1</span>, <span class="number">10</span> * <span class="number">3</span> * <span class="number">3</span>)</span><br><span class="line">        theta = self.fc_loc(xs)</span><br><span class="line">        theta = theta.view(-<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="comment">#这里的两个函数相当于专为这个STN网络而生，第一个是根据输入形状和theta矩阵得到变化后矩阵的Index矩阵(就刚刚说的那个里面有小数的矩阵)</span></span><br><span class="line">        grid = F.affine_grid(theta, x.size())</span><br><span class="line">        <span class="comment">#这里把Index矩阵和输入一起输入，进行采样，然后出来的就是变化后的输入了。</span></span><br><span class="line">        x = F.grid_sample(x, grid)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="comment"># transform the input</span></span><br><span class="line">        x = self.stn(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Perform the usual forward pass</span></span><br><span class="line">        x = F.relu(F.max_pool2d(self.conv1(x), <span class="number">2</span>))</span><br><span class="line">        x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), <span class="number">2</span>))</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">320</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.dropout(x, training=self.training)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x, dim=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model = Net().to(device)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CNN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Self-Attention for CNN</title>
+      <link href="/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
+      <url>/2021/07/21/Transformer%E5%92%8CCNN%E7%9A%84%E5%85%B3%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<p>$$Self-Attention(X)_t= softmax (A_t:)XWval$$</p><p>$$A := XWqryW_{key}^TXw_{val}$$</p><p>$X$​​为一个像素向量,$shape$​​大概长$(T , D_{in})$​这其中$T$​​为像素的数量，$D_{in}$应该为channel维度。</p><p>因此对于这样的输入序列，就算顺序被打乱，输出仍然是相同的</p><p>但在CV任务里，像素的分布是图片的信息之一，将一张图片的像素随机打乱后，就完全是另一张图片了。</p><p>因此要加入位置编码，输入关于位置的信息。</p><p>$$A : = ( X + P ) W _ { q r y } W _ { k e y } ^ { T } ( X + P ) ^ { T }$$</p><p>进一步，把self-attention扩展到多头注意力</p><blockquote><p>多头注意力：把原本的 $W_q,W_k,W_v$​​​​​拆成多个矩阵，再将输出拼接在一起，进行一次线性变换得到最终的output。</p></blockquote><p>$$M H S A ( X ) : =  \underset{h\in[N_h]}{concat} \quad [ Self-Attention( X )] \quad W _ { o u t } + b _ { o u t }$$​​​​</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NLP </tag>
+            
+            <tag> Transformer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一篇：first of all</title>
+      <link href="/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/"/>
+      <url>/2021/07/20/%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9Afirst%20of%20all/</url>
+      
+        <content type="html"><![CDATA[<h1 id="我可以用markdown么？"><a href="#我可以用markdown么？" class="headerlink" title="我可以用markdown么？"></a>我可以用markdown么？</h1><h2 id="我可以用markdown！"><a href="#我可以用markdown！" class="headerlink" title="我可以用markdown！"></a>我可以用markdown！</h2><h3 id="啊啊啊啊我有自己的博客了"><a href="#啊啊啊啊我有自己的博客了" class="headerlink" title="啊啊啊啊我有自己的博客了"></a>啊啊啊啊我有自己的博客了</h3><p>娘嘞！成为大牛指日可待！</p><p>博客是用git和hexo搭建的，然后用了hexo-orange的模板</p><p>后面打算做一些改动</p><ul><li><input disabled="" type="checkbox"> 啊这复选框好难打，notion一对中括号就好了</li><li><input disabled="" type="checkbox"> 首先换个别的水果的像素图，emmmm，也是水果，好像没什么创意</li><li><input disabled="" type="checkbox"> 然后改改颜色，虽然我觉得白色简约很好看</li><li><input disabled="" type="checkbox"> 然后搞两套post的模板</li><li><input disabled="" type="checkbox"> 现在的想法是，只记录关键的技术文档，其余的还是在notion上写，然后主页也会贴一个notion链接，还有就是更新一些大的人生动态，感觉树洞还是有洞比较好，notion更像是自我倾诉的垃圾桶，没人听的见。</li><li><input disabled="" type="checkbox"> 如果可以的话，以后接触前端的话，可以给这个主题的代码改改</li><li><input disabled="" type="checkbox"> 然后继续探索其他玩法，github yyds</li></ul><p>最后，push!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> life </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术无关 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
