@@ -10,6 +10,10 @@
 	<meta charset="utf-8">
 	<meta name="keywords" content=""
 	/>
+	<link rel="stylesheet" href="./mp3player/player/css/styles.css" type="text/css" media="all" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="./mp3player/player/mp3playerplugin.js"></script> 
 	<audio id="audio" src="fengniao.mp3"></audio>
     <script>
         //单个网页实现单击屏幕发出声音
@@ -24,7 +28,7 @@
 		fn = function () {
             playSound();
         }
-        document.body.addEventListener('mousemove', fn, true); 
+        document.body.addEventListener('click', fn, true); 
     </script>
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
@@ -50,6 +54,7 @@
 <body>
 	<!--background-->
 	<div class="ban-head">
+		<div id="mp3Player" data-folder="../music/"></div>
 		<h2>考研倒计时</h2>
 		<h1>距离周珂羽考研还有</h1>
 		<p></p>
