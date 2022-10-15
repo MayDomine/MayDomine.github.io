@@ -7,8 +7,22 @@
   <meta name="keywords" content="技术博客,机器学习,工具使用" />
   <meta name="author" content="Mr.Ketchup" />
   <meta name="description" content="" />
-  
-  
+  <audio id="audio" src="./zky/001.mp3"></audio>
+  <script>
+      //单个网页实现单击屏幕发出声音
+      function playSound(){
+          var audio=document.getElementById("audio");
+          if(audio.paused) {  //如果音频是暂停状态
+              audio.load;     //加载音频文件
+              audio.play();	//播放
+          }
+      }
+      //调用
+  fn = function () {
+          playSound();
+      }
+      document.body.addEventListener('click', fn, true); 
+  </script>
   <title>
     
      Peppermint Candy&#39;s world
