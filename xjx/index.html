@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Home</title>
+	<audio src="001.mp3"></audio>
+	
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content=""
+	/>
+	<audio id="audio" src="fengniao.mp3"></audio>
+    <script>
+        //单个网页实现单击屏幕发出声音
+        function playSound(){
+            var audio=document.getElementById("audio");
+            if(audio.paused) {  //如果音频是暂停状态
+                audio.load;     //加载音频文件
+                audio.play();	//播放
+            }
+        }
+        //调用
+		fn = function () {
+            playSound();
+        }
+        document.body.addEventListener('click', fn, true); 
+    </script>
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+		
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<!--// Font-Awesome-CSS -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/jquery.countdown.css" />	<!-- Countdown-CSS -->
+	<!--fonts-->
+	<link href="http://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<!--//fonts-->
+</head>
+
+<body>
+	<!--background-->
+	<div class="ban-head">
+		<h2>考研倒计时</h2>
+		<h1>距离徐佳茜考研还有</h1>
+		<p></p>
+	</div>
+	<div class="clear"></div>
+	<!--//background-->
+	<!--timer-->
+				<div class="examples">
+						<div class="simply-countdown-losange" id="simply-countdown-losange"></div>
+							<div class="clear"></div>
+				</div>
+					<!--//timer-->
+			<!--//newsletter-->
+						<div class="agileinfo-social-grids">
+						<ul>
+						</ul>
+					</div>	
+				<div class="clear"></div>
+				</div>	
+			</div>
+<!-- //footer -->
+
+</body>
+					
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+		<!-- /count down js -->
+			<script src="js/simplyCountdown.js"></script>
+			<script>
+				var d = new Date(new Date().getTime() + 948 * 120 * 120 * 2000);
+
+				// default example
+				simplyCountdown('.simply-countdown-one', {
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate()
+				});
+
+				// inline example
+				simplyCountdown('.simply-countdown-inline', {
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate(),
+					inline: true
+				});
+
+				//jQuery example
+				$('#simply-countdown-losange').simplyCountdown({
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate(),
+					enableUtc: false
+				});
+			</script>
+		<!-- //Countdown-Timer-JavaScript -->
+<!--//scripts--> 
+
+</html>
